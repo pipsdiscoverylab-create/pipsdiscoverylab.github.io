@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Teacher Resources — Pip's Discovery Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1C3557;--orange:#C0540A;--teal:#00796B;
+  --gold:#F5C800;--green:#1A6B3C;
+  --bg:#F8F9FC;--white:#FFFFFF;--ink:#1A1A1A;
+  --gray:#666;--lgray:#999;--rule:#E0E0E0;
+  --bg-or:#FDF0E6;--bg-te:#E6F5F3;--bg-na:#E8EEF5;
+}
+body{background:var(--bg);font-family:'Nunito Sans',sans-serif;color:var(--ink);line-height:1.6}
+nav{background:var(--navy);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+.nav-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:white;display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-yt{background:var(--orange);color:white;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.75rem;padding:8px 16px;border-radius:100px;text-decoration:none;letter-spacing:0.05em}
+.hero{background:var(--navy);color:white;padding:64px 32px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px}
+.hero-badge{display:inline-block;background:var(--orange);color:white;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px;position:relative;z-index:1}
+.hero h1{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;margin-bottom:14px;position:relative;z-index:1}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1rem;color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto 32px;position:relative;z-index:1}
+.hero-meta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+.hero-chip{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px 14px;border-radius:100px;font-size:0.78rem;color:rgba(255,255,255,0.7);font-weight:600}
+.hero-chip.green{background:rgba(26,107,60,0.3);border-color:rgba(26,107,60,0.5);color:#7BE8A6}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.section{padding:48px 0}
+.section-title{font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:var(--navy);margin-bottom:6px}
+.section-sub{color:var(--gray);font-size:0.9rem;margin-bottom:28px}
+.episode-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.08);margin-bottom:32px}
+.ep-header{background:var(--navy);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.ep-num{font-family:'Nunito',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px}
+.ep-title{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:white;line-height:1.2}
+.ep-title span{color:var(--gold)}
+.ep-tags{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.ep-tag{font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:100px;white-space:nowrap}
+.tag-ngss{background:rgba(0,121,107,0.3);color:#7BE8D6;border:1px solid rgba(0,121,107,0.4)}
+.tag-grade{background:rgba(245,200,0,0.2);color:var(--gold);border:1px solid rgba(245,200,0,0.3)}
+.ep-body{padding:24px 28px}
+.ep-what{font-size:0.9rem;color:var(--gray);line-height:1.75;margin-bottom:20px}
+.ep-learns{margin-bottom:24px}
+.ep-learns h4{font-family:'Nunito',sans-serif;font-size:0.75rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.learn-item{background:var(--bg-te);border-left:3px solid var(--teal);padding:8px 12px;font-size:0.85rem;color:var(--ink);border-radius:0 6px 6px 0}
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dl-card{border:1.5px solid var(--rule);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:10px}
+.dl-card.color-ver{background:var(--bg-or)}
+.dl-card.bw-ver{background:var(--bg-na)}
+.dl-type{display:flex;align-items:center;gap:10px}
+.dl-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.dl-icon.orange{background:var(--orange)}
+.dl-icon.navy{background:var(--navy)}
+.dl-icon.teal{background:var(--teal)}
+.dl-icon.gray{background:#555}
+.dl-info h4{font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:800;color:var(--ink);margin-bottom:1px}
+.dl-info p{font-size:0.75rem;color:var(--gray)}
+.dl-btn{display:block;background:var(--navy);color:white;text-align:center;padding:10px 16px;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;text-decoration:none;transition:background 0.15s}
+.dl-btn:hover{background:var(--orange)}
+.dl-btn.secondary{background:white;color:var(--navy);border:1.5px solid var(--navy)}
+.dl-free{font-size:0.68rem;color:var(--green);font-weight:700;text-align:center}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.how-card{background:white;border-radius:10px;padding:20px 16px;border-top:3px solid var(--orange);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.how-num{font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:var(--orange);margin-bottom:6px}
+.how-card h4{font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:6px}
+.how-card p{font-size:0.82rem;color:var(--gray);line-height:1.6}
+.ngss-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:0.88rem}
+.ngss-table thead tr{background:var(--navy)}
+.ngss-table thead th{padding:10px 14px;text-align:left;color:white;font-family:'Nunito',sans-serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700}
+.ngss-table tbody tr:nth-child(even){background:var(--bg-na)}
+.ngss-table tbody td{padding:10px 14px;border-bottom:1px solid var(--rule);line-height:1.5}
+.ngss-table tbody td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.about-box{background:var(--navy);color:white;border-radius:12px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+.about-box h3{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:var(--gold);margin-bottom:10px}
+.about-box p{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.75}
+.cred-list{list-style:none}
+.cred-list li{font-size:0.88rem;color:rgba(255,255,255,0.65);padding:4px 0;display:flex;gap:8px}
+.cred-list li::before{content:'✓';color:var(--gold);flex-shrink:0}
+.yt-cta{background:var(--orange);border-radius:12px;padding:32px;text-align:center;color:white;margin-top:32px}
+.yt-cta h3{font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;margin-bottom:8px}
+.yt-cta p{font-size:0.9rem;opacity:0.85;margin-bottom:20px}
+.yt-btn{display:inline-block;background:white;color:var(--orange);font-family:'Nunito',sans-serif;font-weight:800;font-size:0.9rem;padding:12px 28px;border-radius:100px;text-decoration:none}
+footer{background:var(--navy);color:rgba(255,255,255,0.4);text-align:center;padding:24px;font-size:0.8rem;margin-top:48px}
+footer a{color:var(--gold);text-decoration:none}
+@media(max-width:600px){
+  .dl-grid,.learn-grid,.how-grid,.about-box{grid-template-columns:1fr}
+  .ep-header{flex-direction:column}
+  .ep-tags{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">🐼 <span>Pip's</span> Discovery Lab</a>
+  <a class="nav-yt" href="https://youtube.com/@PipsDiscoveryLabOfficial" target="_blank">▶ Watch on YouTube</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Free Teacher Resources</div>
+  <h1>Science worksheets kids <span>actually want to do.</span></h1>
+  <p>Free companion worksheets for every episode of Pip's Discovery Lab. NGSS aligned. Print ready. No sign-up required.</p>
+  <div class="hero-meta">
+    <span class="hero-chip green">✓ 100% Free</span>
+    <span class="hero-chip">NGSS Aligned</span>
+    <span class="hero-chip">Grades 1–6</span>
+    <span class="hero-chip">Created by a Teacher & Parent</span>
+    <span class="hero-chip">Color & B&W Versions</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="section">
+    <p class="section-title">Available Now</p>
+    <p class="section-sub">Download free companion worksheets for each episode. Color and black & white versions included. No sign-up. No account. Just download and print.</p>
+
+    <div class="episode-card">
+      <div class="ep-header">
+        <div>
+          <div class="ep-num">Episode 01</div>
+          <div class="ep-title">The Mystery of the <span>Magnetic Cat</span></div>
+        </div>
+        <div class="ep-tags">
+          <span class="ep-tag tag-ngss">NGSS 3-PS2-3 & 3-PS2-4</span>
+          <span class="ep-tag tag-grade">Grade 3 · Ages 8–9</span>
+        </div>
+      </div>
+      <div class="ep-body">
+        <p class="ep-what">Pip tries to build a magnetic cat toy — but the soda can won't stick to his magnet. When Whiskers's metal collar tag gets pulled toward the magnet, the mystery begins. A fun, science-verified episode about magnets, magnetic fields, and why only some metals are magnetic.</p>
+        <div class="ep-learns">
+          <h4>Students will learn</h4>
+          <div class="learn-grid">
+            <div class="learn-item">What a magnetic field is and how it works</div>
+            <div class="learn-item">The three ferromagnetic metals (Fe, Ni, Co)</div>
+            <div class="learn-item">Why some metals are magnetic and others aren't</div>
+            <div class="learn-item">How opposite poles attract and same poles repel</div>
+            <div class="learn-item">Memory trick: "I Need Chocolate" (Iron, Nickel, Cobalt)</div>
+            <div class="learn-item">How magnetic fields pass through non-magnetic materials</div>
+          </div>
+        </div>
+        <div class="dl-grid">
+          <div class="dl-card color-ver">
+            <div class="dl-type">
+              <div class="dl-icon orange">🎨</div>
+              <div class="dl-info"><h4>Student Worksheet</h4><p>Full color · 4 pages · Print ready</p></div>
+            </div>
+            <a class="dl-btn" href="PipsDiscoveryLab_Ep01_Worksheet.pdf" download>⬇ Download Color Version</a>
+            <p class="dl-free">FREE — No sign-up needed</p>
+          </div>
+          <div class="dl-card bw-ver">
+            <div class="dl-type">
+              <div class="dl-icon gray">🖨</div>
+              <div class="dl-info"><h4>Student Worksheet</h4><p>Black & white · 4 pages · Ink-saving</p></div>
+            </div>
+            <a class="dl-btn secondary" href="PipsDiscoveryLab_Ep01_Worksheet_BW.pdf" download>⬇ Download B&W Version</a>
+            <p class="dl-free">FREE — No sign-up needed</p>
+          </div>
+          <div class="dl-card color-ver">
+            <div class="dl-type">
+              <div class="dl-icon teal">📋</div>
+              <div class="dl-info"><h4>Teacher Answer Key</h4><p>Full color · Includes teacher tips & NGSS notes</p></div>
+            </div>
+            <a class="dl-btn" href="PipsDiscoveryLab_Ep01_AnswerKey.pdf" download>⬇ Download Color Answer Key</a>
+            <p class="dl-free">FREE — Teacher use only</p>
+          </div>
+          <div class="dl-card bw-ver">
+            <div class="dl-type">
+              <div class="dl-icon navy">📋</div>
+              <div class="dl-info"><h4>Teacher Answer Key</h4><p>Black & white · Ink-saving version</p></div>
+            </div>
+            <a class="dl-btn secondary" href="PipsDiscoveryLab_Ep01_AnswerKey_BW.pdf" download>⬇ Download B&W Answer Key</a>
+            <p class="dl-free">FREE — Teacher use only</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EP 02 COMING SOON -->
+    <div class="episode-card" style="opacity:0.6">
+      <div class="ep-header">
+        <div>
+          <div class="ep-num">Episode 02 — Coming Soon</div>
+          <div class="ep-title">The Mystery of the <span>Missing Light</span></div>
+        </div>
+        <div class="ep-tags">
+          <span class="ep-tag tag-ngss">NGSS 4-PS3-2</span>
+          <span class="ep-tag tag-grade">Grades 3–8 · Ages 8–14</span>
+        </div>
+      </div>
+      <div class="ep-body">
+        <p class="ep-what">Electricity & Circuits. Static vs current electricity, conductors and insulators, open and closed circuits, series vs parallel. Worksheet available when episode drops.</p>
+        <div style="background:#F0F4FA;border-radius:8px;padding:14px;text-align:center;font-size:0.88rem;color:#666">
+          🔔 Subscribe on YouTube to be notified when Episode 02 drops — worksheet will be available here the same day.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="section" style="padding-top:0">
+    <p class="section-title">How to Use These in Your Classroom</p>
+    <p class="section-sub">Simple 3-step process that fits into any 45-minute science period.</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h4>Watch the Episode</h4>
+        <p>Show Episode 01 free on YouTube — 10 minutes. Pip solves a science mystery. Kids stay engaged. No log-in required.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h4>Hand Out the Worksheet</h4>
+        <p>Print and distribute before or after watching. 7 sections covering vocabulary, fill-in-the-blank, true/false, sorting, short answer, and a take-home experiment.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h4>Assign the Experiment</h4>
+        <p>Section 6 is a take-home magnetic scavenger hunt. Students test 8 objects with a fridge magnet and record results. No school materials needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NGSS -->
+  <div class="section" style="padding-top:0">
+    <p class="section-title">NGSS Alignment — Episode 01</p>
+    <p class="section-sub">All content verified against NGSS, Britannica Kids, ACS, and Science Trek.</p>
+    <table class="ngss-table">
+      <thead>
+        <tr><th>Standard</th><th>Description</th><th>Covered In</th><th>Grade Band</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3-PS2-3</td>
+          <td>Ask questions to determine cause and effect relationships of electric or magnetic interactions between two objects not in contact with each other.</td>
+          <td>Sections 1, 2, 3, 5</td>
+          <td>Grade 3</td>
+        </tr>
+        <tr>
+          <td>3-PS2-4</td>
+          <td>Define a simple design problem that can be solved by applying scientific ideas about magnets.</td>
+          <td>Section 6 (Experiment)</td>
+          <td>Grade 3</td>
+        </tr>
+        <tr>
+          <td>Crosscutting: Cause & Effect</td>
+          <td>Cause and effect relationships are routinely identified, tested, and used to explain change.</td>
+          <td>Sections 3, 4, 5</td>
+          <td>Grades 3–5</td>
+        </tr>
+        <tr>
+          <td>Science Practice: Asking Questions</td>
+          <td>Ask questions that can be investigated and predict reasonable outcomes based on patterns.</td>
+          <td>Episode storyline + Section 5</td>
+          <td>Grades 3–5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section" style="padding-top:0">
+    <p class="section-title">About Pip's Discovery Lab</p>
+    <div class="about-box">
+      <div>
+        <h3>For Kids</h3>
+        <p>Pip is a red panda scientist (early teen) who solves real science mysteries in his dark industrial lab. His orange tabby cat Whiskers assists. Reluctantly. Every episode is 10 minutes, NGSS-aligned, and designed to make kids genuinely curious.</p>
+      </div>
+      <div>
+        <h3>For Teachers & Parents</h3>
+        <ul class="cred-list">
+          <li>Created by a teacher with an International Elementary Education degree</li>
+          <li>Parent of a 7-year-old — built for real kids in real classrooms</li>
+          <li>Every episode NGSS aligned for Grades 1–6</li>
+          <li>Science verified by ACS, Britannica Kids, Science Trek & NGSS</li>
+          <li>Free companion worksheets — color and black & white — for every episode</li>
+          <li>Safe, ad-free educational content</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="yt-cta">
+    <h3>Watch Episode 01 Free on YouTube 🧲</h3>
+    <p>The Mystery of the Magnetic Cat — Pip, Whiskers, and a magnet that refuses to attract a soda can.</p>
+    <a class="yt-btn" href="https://youtube.com/@PipsDiscoveryLabOfficial" target="_blank">▶ Watch Now — @PipsDiscoveryLabOfficial</a>
+  </div>
+  <div style="height:48px"></div>
+</div>
+
+<footer>
+  <p>Pip's Discovery Lab · Free Educational Resources · All worksheets NGSS aligned and science verified</p>
+  <p style="margin-top:6px"><a href="https://youtube.com/@PipsDiscoveryLabOfficial">YouTube</a> · <a href="https://instagram.com/pipsdiscoverylab">Instagram</a> · <a href="mailto:hello@pipsdiscoverylab.com">hello@pipsdiscoverylab.com</a></p>
+  <p style="margin-top:8px;font-size:0.72rem">Stay Curious ✦</p>
+</footer>
+
+</body>
+</html>
